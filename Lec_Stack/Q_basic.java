@@ -12,7 +12,7 @@ public class Q_basic {
 		Q.add(40);
 		Q.add(50);
 		disp(Q);
-//		System.out.println(Q);
+//		System.out.println(Q); 
 	}
 
 	public static void disp(Queue<Integer> Q) {
