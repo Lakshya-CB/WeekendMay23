@@ -1,5 +1,7 @@
 package Lec_Q_LL;
 
+import java.util.Stack;
+
 public class LinkedList {
 	class Node {
 		public Node(int ali) {
@@ -82,9 +84,11 @@ public class LinkedList {
 		}
 		return temp;
 	}
+
 	public void add(int ali) {
 		addLast(ali);
 	}
+
 	public void addLast(int ali) {
 		if (isEmpty()) {
 			addFirst(ali);
@@ -136,39 +140,41 @@ public class LinkedList {
 	}
 
 	public int removeAt(int idx) {
-		if(idx==0) {
+		if (idx == 0) {
 			return removeFirst();
 		}
-		if(idx==size()-1) {
+		if (idx == size() - 1) {
 			return removeLast();
 		}
-		if(idx<0||idx>=size()) {
+		if (idx < 0 || idx >= size()) {
 			throw new RuntimeException("Kya deekh rha hain?");
 		}
-		Node prev = getNodeAt(idx-1);
+		Node prev = getNodeAt(idx - 1);
 		Node curr = prev.next;
 		Node after = curr.next;
 		prev.next = after;
 		return curr.data;
 	}
+
 	public void reverse() {
 		Node curr = head;
 		Node prev = null;
-		while(curr!=null) {
+		while (curr != null) {
 			Node after = curr.next;
 			curr.next = prev;
-			
+
 			prev = curr;
 			curr = after;
 		}
 		head = prev;
 	}
+
 	public void rev2() {
 		rev2(head);
 	}
 
 	private Node rev2(Node nn) {
-		if(nn.next ==null) {
+		if (nn.next == null) {
 			head = nn;
 			return nn;
 		}
@@ -176,7 +182,74 @@ public class LinkedList {
 		Tail.next = nn;
 		nn.next = null;
 		return nn;
-		
+
 	}
 
+	public void KRev(int k) {
+		Node nHead = null;
+		Node nTail = null;
+
+		Node curr = head;
+		Stack<Node> S = new Stack<>();
+		while (curr != null) {
+//			System.out.println("zxcxz");
+			Node after = curr.next;
+
+			S.add(curr);
+			if (S.size() == k) {
+				while (!S.isEmpty()) {
+					Node temp = S.pop();
+					if (nTail == null) {
+						nTail = temp;
+						nHead = temp;
+						nTail.next = null;
+
+					} else {
+						nTail.next = temp;
+						nTail = temp;
+						nTail.next = null;
+					}
+				}
+			}
+			curr = after;
+		}
+
+		head = nHead;
+	}
+
+	public int lastK(int k) {
+		Node Ahead = head;
+		for (int i = 1; i <= k; i++) {
+			Ahead = Ahead.next;
+		}
+		Node curr = head;
+		while (Ahead != null) {
+			Ahead = Ahead.next;
+			curr = curr.next;
+		}
+		return curr.data;
+	}
+	public int getMid() {
+		Node fast = head;
+		Node slow = head;
+//		while(fast.next!=null ?? fast!=null ) {
+		while(fast!=null && fast.next!=null ) {
+					
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow.data;
+	}
+	public boolean hasCycle() {
+		Node slow = head;
+		Node fast = head;
+		while(fast!=null && fast.next!=null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow==fast) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class Q_QPS {
 	public static void main(String[] args) {
-
+		
 	}
 
 	public static void firstNegWinK(int[] arr, int k) {

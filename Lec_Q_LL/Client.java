@@ -8,19 +8,15 @@ public class Client {
 		LL.add(30);
 		LL.add(40);
 		LL.add(50);
-		LL.print();
-		LL.reverse();
-		LL.print();
-//		LL.removeAt(2);
-//
-//		LL.print();
-//		LL.removeAt(2);
-//
-//		LL.print();
-//		LL.removeAt(2);
-//
-//		LL.print();
-		
 
+		LL.add(60);
+		LL.add(70);
+		LL.add(80);
+		LL.add(90);
+		
+		LL.print();
+		LL.KRev(3);
+		LL.print();
+		
 	}
 }
