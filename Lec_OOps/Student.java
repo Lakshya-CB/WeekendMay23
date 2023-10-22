@@ -5,6 +5,11 @@ public class Student {
 	int Age = 0;
 	String Name = "chotu";
 
+	@Override
+	public String toString() {
+		return Name + " - "+Age;
+	}
+
 	public Student() {
 		this("bhuuula", 49);
 

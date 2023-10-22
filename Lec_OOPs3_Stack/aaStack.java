@@ -24,7 +24,7 @@ public class aaStack {
 		return arr[tos];
 	}
 
-	public int poll() {
+	public int pop() {
 		if(isEmpty()) {
 			throw new RuntimeException("Kya nikaal rha hein?");
 		}
